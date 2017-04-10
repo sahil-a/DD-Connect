@@ -21,6 +21,7 @@
 		BAEC98931E9AD75400032A0A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC988F1E9AD75400032A0A /* Event.swift */; };
 		BAEC98941E9AD75400032A0A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98901E9AD75400032A0A /* Location.swift */; };
 		BAEC98951E9AD75400032A0A /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98911E9AD75400032A0A /* Review.swift */; };
+		BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98971E9B51D500032A0A /* LocationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BAEC988F1E9AD75400032A0A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BAEC98901E9AD75400032A0A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BAEC98911E9AD75400032A0A /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		BAEC98971E9B51D500032A0A /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		C40DCA39311EA51B5BB9B3F9 /* Pods_DD_Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DD_Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0C56E83D3B6E8FF01B726 /* Pods-DD Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-DD Connect/Pods-DD Connect.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				BAEC98781E9AD4DC00032A0A /* Actions.sks */,
 				BAEC987A1E9AD4DC00032A0A /* MenuScene.swift */,
 				BAEC987C1E9AD4DC00032A0A /* MenuViewController.swift */,
+				BAEC98971E9B51D500032A0A /* LocationsViewController.swift */,
 				BAEC987E1E9AD4DC00032A0A /* Main.storyboard */,
 				BAEC98961E9AD75900032A0A /* Model */,
 				BAEC98811E9AD4DC00032A0A /* Assets.xcassets */,
@@ -250,6 +253,7 @@
 				BAEC98921E9AD75400032A0A /* FirebaseHelper.swift in Sources */,
 				BAEC987B1E9AD4DC00032A0A /* MenuScene.swift in Sources */,
 				BAEC98951E9AD75400032A0A /* Review.swift in Sources */,
+				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
 				BAEC987D1E9AD4DC00032A0A /* MenuViewController.swift in Sources */,
 				BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */,
 				BAEC98941E9AD75400032A0A /* Location.swift in Sources */,

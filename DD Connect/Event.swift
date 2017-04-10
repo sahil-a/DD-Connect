@@ -16,4 +16,5 @@ struct Event {
     let likes: Int
     let dislikes: Int
     let rsvpEmail: String
+    let imageRef: String
 }

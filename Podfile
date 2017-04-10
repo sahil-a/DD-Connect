@@ -7,6 +7,7 @@ target 'DD Connect' do
 pod 'Firebase/Core'
   pod 'Firebase/Database'
 
+pod 'Firebase/Storage'
   # Pods for DD Connect
 
 end

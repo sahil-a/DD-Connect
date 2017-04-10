@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 import Firebase
 
 class FirebaseHelper {
@@ -27,7 +28,8 @@ class FirebaseHelper {
                                       description: rawEvent["description"] as! String,
                                       likes: rawEvent["likes"] as! Int,
                                       dislikes: rawEvent["dislikes"] as! Int,
-                                      rsvpEmail: rawEvent["rsvpEmail"] as! String)
+                                      rsvpEmail: rawEvent["rsvpEmail"] as! String,
+                                      imageRef: rawEvent["imageRef"] as! String)
                     events.append(event)
                 }
                 completion(events)
@@ -56,14 +58,37 @@ class FirebaseHelper {
                                             description: rawLocation["description"] as! String,
                                             likes: rawLocation["likes"] as! Int,
                                             dislikes: rawLocation["dislikes"] as! Int,
-                                            category: LocationType(rawValue: rawLocation["category"] as! String)! ,
-                                            reviews: reviews)
+                                            category: LocationType(rawValue: rawLocation["category"] as! String)!,
+                                            reviews: reviews,
+                                            imageRef: rawLocation["imageRef"] as! String)
                     locations.append(location)
                 }
                 completion(locations)
             }
         }) { (_) in
             completion(nil)
+        }
+    }
+    
+    func upload(image: UIImage, to: String, completion: @escaping (Bool) -> Void) {
+        let storage = FIRStorage.storage(url: "gs://dd-connect.appspot.com/")
+        let childRef = storage.reference().child(to)
+        let _ = childRef.put(UIImageJPEGRepresentation(image, 1)!, metadata: nil) { (meta, error) in
+            completion(error == nil)
+        }
+    }
+    
+    func download(from: String, completion: @escaping (UIImage?) -> Void) {
+        let storage = FIRStorage.storage(url: "gs://dd-connect.appspot.com/")
+        let childRef = storage.reference().child(from)
+        // max size is 15MB
+        childRef.data(withMaxSize: 15 * 1024 * 1024) { data, error in
+            if error != nil {
+                completion(nil)
+            } else {
+                let image = UIImage(data: data!)
+                completion(image)
+            }
         }
     }
 }

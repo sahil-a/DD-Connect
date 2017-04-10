@@ -16,6 +16,7 @@ struct Location {
     let dislikes: Int
     let category: LocationType
     let reviews: [Review]
+    let imageRef: String
 }
 
 enum LocationType: String {
