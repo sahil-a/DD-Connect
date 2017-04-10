@@ -26,7 +26,7 @@ class MenuViewController: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            
+            // TODO: remove these stats once development is complete
             view.showsFPS = true
             view.showsNodeCount = true
         }
