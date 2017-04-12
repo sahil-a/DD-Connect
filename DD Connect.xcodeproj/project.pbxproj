@@ -22,6 +22,7 @@
 		BAEC98941E9AD75400032A0A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98901E9AD75400032A0A /* Location.swift */; };
 		BAEC98951E9AD75400032A0A /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98911E9AD75400032A0A /* Review.swift */; };
 		BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98971E9B51D500032A0A /* LocationsViewController.swift */; };
+		BAEC989A1E9BCA5C00032A0A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98991E9BCA5C00032A0A /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		BAEC98901E9AD75400032A0A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BAEC98911E9AD75400032A0A /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		BAEC98971E9B51D500032A0A /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		BAEC98991E9BCA5C00032A0A /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C40DCA39311EA51B5BB9B3F9 /* Pods_DD_Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DD_Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0C56E83D3B6E8FF01B726 /* Pods-DD Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-DD Connect/Pods-DD Connect.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 				BAEC987C1E9AD4DC00032A0A /* MenuViewController.swift */,
 				BAEC98971E9B51D500032A0A /* LocationsViewController.swift */,
 				BAEC987E1E9AD4DC00032A0A /* Main.storyboard */,
+				BAEC98991E9BCA5C00032A0A /* HeaderView.swift */,
 				BAEC98961E9AD75900032A0A /* Model */,
 				BAEC98811E9AD4DC00032A0A /* Assets.xcassets */,
 				BAEC988C1E9AD67300032A0A /* GoogleService-Info.plist */,
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEC98921E9AD75400032A0A /* FirebaseHelper.swift in Sources */,
+				BAEC989A1E9BCA5C00032A0A /* HeaderView.swift in Sources */,
 				BAEC987B1E9AD4DC00032A0A /* MenuScene.swift in Sources */,
 				BAEC98951E9AD75400032A0A /* Review.swift in Sources */,
 				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
