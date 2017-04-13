@@ -17,4 +17,17 @@ struct Event {
     let dislikes: Int
     let rsvpEmail: String
     let imageRef: String
+    var popularity: Int {
+        get {
+            let dLikes = likes - dislikes
+            switch dLikes {
+            case let x where x < 0:
+                return 1
+            case let x where x < 2:
+                return 2
+            default:
+                return 3
+            }
+        }
+    }
 }

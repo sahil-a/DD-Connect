@@ -17,6 +17,19 @@ struct Location {
     let category: LocationType
     let reviews: [Review]
     let imageRef: String
+    var popularity: Int {
+        get {
+            let dLikes = likes - dislikes
+            switch dLikes {
+            case let x where x < 0:
+                return 1
+            case let x where x < 2:
+                return 2
+            default:
+                return 3
+            }
+        }
+    }
 }
 
 enum LocationType: String {
