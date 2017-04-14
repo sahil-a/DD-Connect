@@ -21,7 +21,7 @@ struct Location {
         get {
             let dLikes = likes - dislikes
             switch dLikes {
-            case let x where x < 0:
+            case let x where x <= 0:
                 return 1
             case let x where x < 2:
                 return 2

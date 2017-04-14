@@ -66,6 +66,14 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
                 imageView.image = image
             }
         }
+        let popularity = locations[indexPath.row].popularity
+        for i in 1...3 {
+            let adj = 4 + CGFloat(i) * 7.5
+            let height = CGFloat(i) * 6.0
+            let bar = UIView(frame: CGRect(x: cell.frame.width - size.height + adj, y: 44 - height, width: 5.0, height: height))
+            bar.backgroundColor = UIColor.black.withAlphaComponent((popularity >= i) ? 0.6 : 0.1)
+            cell.addSubview(bar)
+        }
         return cell
     }
 
