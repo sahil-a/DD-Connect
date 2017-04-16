@@ -10,17 +10,19 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, MenuSceneDelegate {
+    
+    private var inInformationMode: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "MenuScene") {
+            if let scene = SKScene(fileNamed: "MenuScene") as? MenuScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
+                scene.menuDelegate = self
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -51,5 +53,18 @@ class MenuViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    // MARK: Menu Delegate
+    
+    func didClickMenuItem(title: String) {
+        if inInformationMode {
+            switch title {
+            case "Locations":
+                performSegue(withIdentifier: "Locations", sender: self)
+            default:
+                break
+            }
+        }
     }
 }

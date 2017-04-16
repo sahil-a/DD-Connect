@@ -22,5 +22,10 @@ class HeaderView: UIView {
 
     func setup() {
         layer.cornerRadius = 30
+        layer.shadowOffset = CGSize.zero
+        layer.shadowOpacity = 0.17
+        layer.shadowRadius = 3
+        layer.shadowColor = UIColor.black.cgColor
+        layer.masksToBounds = false
     }
 }

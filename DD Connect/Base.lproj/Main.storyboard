@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JKT-Ez-PI1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,6 +22,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="JKT-Ez-PI1" kind="show" identifier="Locations" id="Q3E-Dm-ySv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,23 +41,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBF-B3-rbu" customClass="HeaderView" customModule="DD_Connect" customModuleProvider="target">
-                                <rect key="frame" x="-10" y="-10" width="395" height="78"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="str-4J-PPX">
-                                        <rect key="frame" x="160.5" y="43" width="74" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.53662114132497685" green="0.67761460233595772" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="str-4J-PPX" firstAttribute="centerX" secondItem="sBF-B3-rbu" secondAttribute="centerX" id="PAa-Xd-FfL"/>
-                                    <constraint firstAttribute="bottom" secondItem="str-4J-PPX" secondAttribute="bottom" constant="14" id="hUv-M5-1EG"/>
-                                    <constraint firstAttribute="height" constant="78" id="tjz-GF-v0F"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="odh-N0-L3g">
                                 <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,6 +66,36 @@
                                     <outlet property="delegate" destination="JKT-Ez-PI1" id="X7R-eW-H3m"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBF-B3-rbu" customClass="HeaderView" customModule="DD_Connect" customModuleProvider="target">
+                                <rect key="frame" x="-10" y="-10" width="395" height="78"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="str-4J-PPX">
+                                        <rect key="frame" x="160.5" y="43" width="74" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7R-Jr-fue">
+                                        <rect key="frame" x="31" y="44" width="12" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="K7r-GQ-wpy"/>
+                                            <constraint firstAttribute="width" constant="12" id="ugg-6f-QWQ"/>
+                                        </constraints>
+                                        <state key="normal" image="Back"/>
+                                        <connections>
+                                            <action selector="back:" destination="JKT-Ez-PI1" eventType="touchUpInside" id="NKW-lz-6Y6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36451263795040312" green="0.5638842923616495" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="str-4J-PPX" firstAttribute="centerX" secondItem="sBF-B3-rbu" secondAttribute="centerX" id="PAa-Xd-FfL"/>
+                                    <constraint firstAttribute="bottom" secondItem="str-4J-PPX" secondAttribute="bottom" constant="14" id="hUv-M5-1EG"/>
+                                    <constraint firstItem="N7R-Jr-fue" firstAttribute="leading" secondItem="sBF-B3-rbu" secondAttribute="leading" constant="31" id="lRN-Ic-E74"/>
+                                    <constraint firstItem="str-4J-PPX" firstAttribute="centerY" secondItem="N7R-Jr-fue" secondAttribute="centerY" id="sHX-Cc-qUf"/>
+                                    <constraint firstAttribute="height" constant="78" id="tjz-GF-v0F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -101,4 +117,7 @@
             <point key="canvasLocation" x="928.79999999999995" y="-24.7376311844078"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Back" width="17" height="28"/>
+    </resources>
 </document>

@@ -24,6 +24,11 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     // MARK: Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

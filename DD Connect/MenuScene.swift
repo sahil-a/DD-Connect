@@ -14,8 +14,23 @@ class MenuScene: SKScene {
     private var centerNode: SKShapeNode!
     private var selectedNode: String = ""
     private var selectedLocation: CGPoint!
+    var menuDelegate: MenuSceneDelegate?
+    private var menuTitles: [String] = ["Locations", "City Status", "Events", "----"]
+    
+    func tapped(_ sender: UITapGestureRecognizer) {
+        if sender.state == .recognized {
+            let location = convertPoint(fromView: sender.location(in: view!))
+            if let name = nodes(at: location).first?.name {
+                menuDelegate?.didClickMenuItem(title: name)
+            }
+        }
+        
+    }
     
     override func didMove(to view: SKView) {
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        view.addGestureRecognizer(tapGestureRecognizer)
         
         // remove gravity and add edge boundary physics body
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -24,7 +39,7 @@ class MenuScene: SKScene {
         // setup center node with physics body
         let centerNodeRadius = frame.width * 0.3
         centerNode = SKShapeNode(circleOfRadius: centerNodeRadius)
-        centerNode.fillColor = UIColor(red:0.42, green:0.70, blue:1.00, alpha:1.00)
+        centerNode.fillColor = UIColor(red:0.35, green:0.58, blue:0.97, alpha:1.00)
         centerNode.physicsBody = SKPhysicsBody(circleOfRadius: centerNodeRadius)
         centerNode.physicsBody?.collisionBitMask = 0
         centerNode.physicsBody?.mass = 1
@@ -42,16 +57,17 @@ class MenuScene: SKScene {
         for location in locations {
             x += 1
             let positiveX = location.x > 0
-            let positiveY = location.y > 0
             let otherNode = SKShapeNode(circleOfRadius: otherNodeRadius)
             otherNode.fillColor = UIColor(red:1.00, green:0.65, blue:0.60, alpha:1.00)
             otherNode.physicsBody = SKPhysicsBody(circleOfRadius: otherNodeRadius)
             otherNode.physicsBody?.collisionBitMask = 0
             otherNode.physicsBody?.mass = 1
             otherNode.physicsBody?.restitution = 0.75
-            otherNode.name = "otherNode\(x)"
+            otherNode.name = menuTitles[x-1]
             otherNode.physicsBody?.linearDamping = 6
+            
             otherNode.position = location
+            
             addChild(otherNode)
         
             let links = 8
@@ -124,9 +140,7 @@ class MenuScene: SKScene {
     }
     
     func touchMoved(toPoint pos : CGPoint, touch: UITouch) {
-        if (nodes(at: pos).first?.name ?? "-") == selectedNode {
-            selectedLocation = pos
-        }
+        selectedLocation = pos
     }
     
     func touchUp(atPoint pos : CGPoint) {
@@ -164,4 +178,8 @@ extension CGPoint {
     func distance(from: CGPoint) -> CGFloat {
         return sqrt(pow(from.x - x, 2) + pow(from.y - y, 2))
     }
+}
+
+protocol MenuSceneDelegate {
+    func didClickMenuItem(title: String)
 }
