@@ -6,6 +6,7 @@ target 'DD Connect' do
   use_frameworks!
 pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Alamofire', '~> 4.4'
 
 pod 'Firebase/Storage'
   # Pods for DD Connect

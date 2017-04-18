@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AF83BA6F8E28309EBE9C5DD /* Pods_DD_Connect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C40DCA39311EA51B5BB9B3F9 /* Pods_DD_Connect.framework */; };
+		BA94D84A1EA484B900CEC58F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA94D8491EA484B900CEC58F /* LocationViewController.swift */; };
 		BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */; };
 		BAEC98771E9AD4DC00032A0A /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98761E9AD4DC00032A0A /* MenuScene.sks */; };
 		BAEC98791E9AD4DC00032A0A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98781E9AD4DC00032A0A /* Actions.sks */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		87D6F287451E540D40E157BD /* Pods-DD Connect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD Connect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DD Connect/Pods-DD Connect.debug.xcconfig"; sourceTree = "<group>"; };
+		BA94D8491EA484B900CEC58F /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		BAEC98711E9AD4DC00032A0A /* DD Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC98761E9AD4DC00032A0A /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				BAEC98761E9AD4DC00032A0A /* MenuScene.sks */,
 				BAEC98781E9AD4DC00032A0A /* Actions.sks */,
 				BAEC987A1E9AD4DC00032A0A /* MenuScene.swift */,
+				BA94D8491EA484B900CEC58F /* LocationViewController.swift */,
 				BAEC987C1E9AD4DC00032A0A /* MenuViewController.swift */,
 				BAEC98971E9B51D500032A0A /* LocationsViewController.swift */,
 				BAEC987E1E9AD4DC00032A0A /* Main.storyboard */,
@@ -258,6 +261,7 @@
 				BAEC987B1E9AD4DC00032A0A /* MenuScene.swift in Sources */,
 				BAEC98951E9AD75400032A0A /* Review.swift in Sources */,
 				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
+				BA94D84A1EA484B900CEC58F /* LocationViewController.swift in Sources */,
 				BAEC987D1E9AD4DC00032A0A /* MenuViewController.swift in Sources */,
 				BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */,
 				BAEC98941E9AD75400032A0A /* Location.swift in Sources */,

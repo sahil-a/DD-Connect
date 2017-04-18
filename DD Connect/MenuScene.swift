@@ -65,7 +65,6 @@ class MenuScene: SKScene {
             otherNode.physicsBody?.restitution = 0.75
             otherNode.name = menuTitles[x-1]
             otherNode.physicsBody?.linearDamping = 6
-            
             otherNode.position = location
             
             addChild(otherNode)
