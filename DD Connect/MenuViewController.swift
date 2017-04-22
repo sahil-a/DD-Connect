@@ -32,6 +32,24 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        
+        let currentHelper = CurrentHelper()
+        currentHelper.getAccessToken { (token) in
+            guard let token = token else {
+                print("failed to get token")
+                return
+            }
+            currentHelper.getLatestTemperatureMeasures(accessToken: token) { measures in
+                if let measures = measures {
+                    print(measures.mean)
+                } else {
+                    print("failed to get latest temperature measures")
+                }
+            }
+            currentHelper.getLatestHumidity(accessToken: token) { humidity in
+                print(humidity ?? "failed to get humidity")
+            }
+        }
     }
 
     override var shouldAutorotate: Bool {
