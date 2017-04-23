@@ -29,7 +29,8 @@ class FirebaseHelper {
                                       likes: rawEvent["likes"] as! Int,
                                       dislikes: rawEvent["dislikes"] as! Int,
                                       rsvpEmail: rawEvent["rsvpEmail"] as! String,
-                                      imageRef: rawEvent["imageRef"] as! String)
+                                      imageRef: rawEvent["imageRef"] as! String,
+                                      thumbnailRef: rawEvent["thumbnailRef"] as! String)
                     events.append(event)
                 }
                 completion(events)
@@ -60,7 +61,9 @@ class FirebaseHelper {
                                             dislikes: rawLocation["dislikes"] as! Int,
                                             category: LocationType(rawValue: rawLocation["category"] as! String)!,
                                             reviews: reviews,
-                                            imageRef: rawLocation["imageRef"] as! String)
+                                            imageRef: rawLocation["imageRef"] as! String,
+                                            hours: rawLocation["hours"] as! String,
+                                            thumbnailRef: rawLocation["thumbnailRef"] as! String)
                     locations.append(location)
                 }
                 completion(locations)
@@ -103,6 +106,38 @@ class FirebaseHelper {
                 let image = UIImage(data: data!)
                 completion(image)
             }
+        }
+    }
+    
+    func makeReport(report: Report, completion: @escaping (Bool) -> Void) {
+        // this function uses fake lag, the report is made in the background
+        var data = [
+            "body": report.body,
+            "type": report.type.rawValue
+        ]
+        if let image = report.image {
+            upload(image: image, to: "\(report.title).jpeg", completion: {_ in})
+            data["imageRef"] = "\(report.title).jpeg"
+        }
+        root.child("reports").child(report.title).setValue(data)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            // fake lag
+            completion(true)
+        })
+    }
+    
+    func getReports(completion: @escaping ([Report]?) -> Void) {
+        root.child("reports").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let rawReports = (snapshot.value as? [String: [String: String]]) {
+                var reports = [Report]()
+                for (title, rawReport) in rawReports {
+                    let report = Report(image: nil, imageRef: rawReport["imageRef"], body: rawReport["body"]!, title: title, type: ReportType(rawValue: rawReport["imageRef"]!)!)
+                    reports.append(report)
+                }
+                completion(reports)
+            }
+        }) { (_) in
+            completion(nil)
         }
     }
 }

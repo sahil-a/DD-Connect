@@ -12,7 +12,9 @@ import GameplayKit
 
 class MenuViewController: UIViewController, MenuSceneDelegate {
     
-    private var inInformationMode: Bool = true
+    var mode: Mode = .Information
+    @IBOutlet weak var firstLogo: UIButton!
+    @IBOutlet weak var secondLogo: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +60,16 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
     // MARK: Menu Delegate
     
     func didClickMenuItem(title: String) {
-        let available = ["Locations", "City Status"]
-        if inInformationMode {
+        if mode == .Information {
+            let available = ["Locations", "City Status", "Events"]
+            switch title {
+            case let x where available.contains(x):
+                performSegue(withIdentifier: x, sender: self)
+            default:
+                break
+            }
+        } else if mode == .Hero {
+            let available = ["Report"]
             switch title {
             case let x where available.contains(x):
                 performSegue(withIdentifier: x, sender: self)
@@ -68,4 +78,46 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
             }
         }
     }
+    
+    @IBAction func firstLogoClicked() {
+        let modes: [Mode] = [.Information, .Hero, .Staff]
+        let currentIndex = modes.index(of: mode)!
+        let nextIndex = (currentIndex + 1) % 3
+        let firstIndex = (nextIndex + 1) % 3
+        let secondIndex = (firstIndex + 1) % 3
+        ((view as! SKView).scene as! MenuScene).switchMode(to: modes[nextIndex])
+        firstLogo.setImage(UIImage(named: modes[firstIndex].rawValue), for: .normal)
+        secondLogo.setImage(UIImage(named: modes[secondIndex].rawValue), for: .normal)
+        mode = modes[nextIndex]
+        disableModeSwitching()
+    }
+    
+    @IBAction func secondLogoClicked() {
+        let modes: [Mode] = [.Information, .Hero, .Staff]
+        let currentIndex = modes.index(of: mode)!
+        let nextIndex = (currentIndex + 2) % 3
+        let firstIndex = (nextIndex + 1) % 3
+        let secondIndex = (firstIndex + 1) % 3
+        ((view as! SKView).scene as! MenuScene).switchMode(to: modes[nextIndex])
+        firstLogo.setImage(UIImage(named: modes[firstIndex].rawValue), for: .normal)
+        secondLogo.setImage(UIImage(named: modes[secondIndex].rawValue), for: .normal)
+        mode = modes[nextIndex]
+        disableModeSwitching()
+    }
+    
+    func disableModeSwitching() {
+        firstLogo.isEnabled = false
+        secondLogo.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            self.firstLogo.isEnabled = true
+            self.secondLogo.isEnabled = true
+        })
+    }
+}
+
+
+enum Mode: String {
+    case Information = "DD Logo"
+    case Hero = "DD Logo Red"
+    case Staff = "DD Logo Green"
 }

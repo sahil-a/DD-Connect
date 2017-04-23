@@ -15,7 +15,18 @@ class MenuScene: SKScene {
     private var selectedNode: String = ""
     private var selectedLocation: CGPoint!
     var menuDelegate: MenuSceneDelegate?
-    private var menuTitles: [String] = ["City Status", "Events", "Locations"]
+    private var mode: Mode = .Information
+    private var staffMenuItems: [String] = []
+    private var menuTitles: [String] {
+        switch mode {
+        case .Information:
+            return ["City Status", "Events", "Locations"]
+        case .Hero:
+            return ["Report", "Contact"]
+        case .Staff:
+            return staffMenuItems
+        }
+    }
     
     func tapped(_ sender: UITapGestureRecognizer) {
         if sender.state == .recognized {
@@ -47,17 +58,22 @@ class MenuScene: SKScene {
         centerNode.physicsBody?.isDynamic = false
         centerNode.physicsBody?.categoryBitMask = 0b0001
         addChild(centerNode)
-        
-       
+        setupOtherNodes()
+    }
+    
+    func setupOtherNodes() {
+        let centerNodeRadius = frame.width * 0.3
         let otherNodeRadius = frame.width * 0.15
-        let locations = [CGPoint(x: 4, y: otherNodeRadius + 80 - frame.height / 2),
+        let locations = (menuTitles.count == 3) ? [CGPoint(x: 4, y: otherNodeRadius + 80 - frame.height / 2),
                          CGPoint(x: frame.width / 2 - otherNodeRadius - 50, y: -otherNodeRadius - 80 + frame.height / 2),
-                         CGPoint(x: -frame.width / 2 + otherNodeRadius + 50, y: -otherNodeRadius - 80 + frame.height / 2)]
+                         CGPoint(x: -frame.width / 2 + otherNodeRadius + 50, y: -otherNodeRadius - 80 + frame.height / 2)] : [CGPoint(x: 4, y: otherNodeRadius + 80 - frame.height / 2),
+                                                                                                                              CGPoint(x: -4, y: -otherNodeRadius - 80 + frame.height / 2)]
         var x = 0
         for location in locations {
             x += 1
+            let name = menuTitles[x-1]
             let positiveX = location.x > 0
-            let texture = SKTexture(imageNamed: menuTitles[x-1])
+            let texture = SKTexture(imageNamed: name)
             let otherNode = SKShapeNode(circleOfRadius: otherNodeRadius)
             otherNode.fillColor = UIColor.white
             otherNode.fillTexture = texture
@@ -70,38 +86,38 @@ class MenuScene: SKScene {
             otherNode.position = location
             
             addChild(otherNode)
-        
+            
             let links = 8
             let dx = otherNode.position.x - centerNode.position.x
             let dy = otherNode.position.y - centerNode.position.y
             let slope = dy/dx
-        
+            
             var distance = centerNodeRadius - 50
             // this was derived with the distance formula
             // p1 is the point that will link the centerNode to the first link
             var x = ((!positiveX) ? -1 : 1) * distance / sqrt(pow(slope, 2) + 1)
             var y = slope * x
             let p1 = CGPoint(x: x, y: y)
-        
+            
             distance = otherNodeRadius - 50
             // the sign is based off of where the two are relative to each other; include if later
             x = (((positiveX) ? -1 : 1) * distance / sqrt(pow(slope, 2) + 1)) + otherNode.position.x
             y = ((positiveX) ? -1 : 1) * slope * (distance / sqrt(pow(slope, 2) + 1)) + otherNode.position.y
             let p2 = CGPoint(x: x, y: y)
-
+            
             distance = p2.distance(from: p1)
-
+            
             let linkLength = distance / CGFloat(links)
             let angle = atan(slope)
-        
-            let firstLink = getLinkNode(length: linkLength)
+            
+            let firstLink = getLinkNode(length: linkLength, name: name)
             firstLink.position = CGPoint(x: p1.x, y: p1.y)
             firstLink.zRotation = angle
             addChild(firstLink)
             physicsWorld.add(SKPhysicsJointPin.joint(withBodyA: centerNode.physicsBody!, bodyB: firstLink.physicsBody!, anchor: firstLink.position))
             var lastLink: SKNode = firstLink
             for i in 1...links-1 {
-                let link = getLinkNode(length: linkLength)
+                let link = getLinkNode(length: linkLength, name: name)
                 link.position = CGPoint(x: p1.x + ((positiveX) ? 1 : -1) * CGFloat(i) * linkLength * cos(angle), y: p1.y + ((positiveX) ? 1 : -1) * CGFloat(i) * linkLength * sin(angle))
                 link.zRotation = angle
                 addChild(link)
@@ -112,7 +128,7 @@ class MenuScene: SKScene {
         }
     }
     
-    func getLinkNode(length: CGFloat) -> SKShapeNode {
+    func getLinkNode(length: CGFloat, name: String) -> SKShapeNode {
         let linkNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: length, height: 10))
         linkNode.physicsBody = SKPhysicsBody(rectangleOf: linkNode.frame.size)
         linkNode.physicsBody?.collisionBitMask = 0b0000
@@ -120,6 +136,7 @@ class MenuScene: SKScene {
         linkNode.fillColor = UIColor.gray
         linkNode.physicsBody?.mass = 0.3
         linkNode.zPosition = -10
+        linkNode.name = name
         return linkNode
     }
     
@@ -132,6 +149,22 @@ class MenuScene: SKScene {
             let dt: CGFloat = 1.0/20.0
             node.physicsBody?.velocity = CGVector(dx: dx/dt, dy: dy/dt)
         }
+    }
+    
+    func switchMode(to: Mode) {
+        physicsWorld.removeAllJoints()
+        physicsWorld.gravity = CGVector(dx: 0, dy: 30)
+        self.centerNode.fillTexture = SKTexture(imageNamed: to.rawValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+            for child in (self.scene!.children) {
+                if child != self.centerNode {
+                    child.removeFromParent()
+                }
+            }
+            self.mode = to
+            self.setupOtherNodes()
+        })
     }
     
     // MARK: Handle Touch Events

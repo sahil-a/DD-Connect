@@ -7,16 +7,20 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseDatabase
 
 struct Location {
     let name: String
     let address: String
     let description: String
-    let likes: Int
-    let dislikes: Int
+    var likes: Int
+    var dislikes: Int
     let category: LocationType
     let reviews: [Review]
     let imageRef: String
+    let hours: String
+    let thumbnailRef: String
     var popularity: Int {
         get {
             let dLikes = likes - dislikes
@@ -29,6 +33,12 @@ struct Location {
                 return 3
             }
         }
+    }
+    
+    func updateLikes() {
+        let root: FIRDatabaseReference = FIRDatabase.database().reference()
+        root.child("locations/\(name)/likes").setValue(likes)
+        root.child("locations/\(name)/dislikes").setValue(dislikes)
     }
 }
 

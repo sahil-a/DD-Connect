@@ -1,25 +1,25 @@
 //
-//  LocationsViewController.swift
+//  EventsViewController.swift
 //  DD Connect
 //
-//  Created by Sahil Ambardekar on 4/10/17.
+//  Created by Sahil Ambardekar on 4/22/17.
 //  Copyright © 2017 DROP TABLE teams;--. All rights reserved.
 //
 
 import UIKit
 
-class LocationsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+class EventsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet weak var collectionView: UICollectionView!
-    private var locations: [Location] = []
-    private var selectedLocation: Location!
+    private var events: [Event] = []
+    private var selectedEvent: Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let helper = FirebaseHelper()
-        helper.getLocations { (locations) in
-            if let locations = locations {
-                self.locations = locations
+        helper.getEvents { (events) in
+            if let events = events {
+                self.events = events
                 self.collectionView.reloadData()
             }
         }
@@ -33,7 +33,7 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
     // MARK: Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return locations.count
+        return events.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -55,24 +55,24 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
         let label = UILabel(frame: CGRect(x: 80, y: -7, width: cell.frame.width - 20 , height: cell.frame.height))
         label.font = label.font.withSize(16)
         label.textColor = UIColor.black.withAlphaComponent(0.7)
-        label.text = locations[indexPath.row].name
+        label.text = events[indexPath.row].name
         cell.addSubview(label)
         let secondaryLabel = UILabel(frame: CGRect(x: 80, y: 11, width: cell.frame.width - 20 - size.height - 70, height: cell.frame.height))
         secondaryLabel.font = secondaryLabel.font.withSize(12)
         secondaryLabel.textColor = UIColor.black.withAlphaComponent(0.4)
-        secondaryLabel.text = locations[indexPath.row].description
+        secondaryLabel.text = events[indexPath.row].description
         cell.addSubview(secondaryLabel)
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size.height, height: size.height))
         imageView.layer.cornerRadius = size.height / 2
         imageView.layer.masksToBounds = true
         cell.addSubview(imageView)
         let helper = FirebaseHelper()
-        helper.download(from: locations[indexPath.row].thumbnailRef) { (image) in
+        helper.download(from: events[indexPath.row].thumbnailRef) { (image) in
             if let image = image {
                 imageView.image = image
             }
         }
-        let popularity = locations[indexPath.row].popularity
+        let popularity = events[indexPath.row].popularity
         for i in 1...3 {
             let adj = 4 + CGFloat(i) * 7.5
             let height = CGFloat(i) * 6.0
@@ -82,7 +82,7 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 7, bottom: 0, right: 15)
     }
@@ -96,14 +96,14 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedLocation = locations[indexPath.row]
-        performSegue(withIdentifier: "location", sender: self)
+        selectedEvent = events[indexPath.row]
+        performSegue(withIdentifier: "event", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier ?? "" == "location" {
-            let toVC = segue.destination as! LocationViewController
-            toVC.location =  selectedLocation
+        if segue.identifier ?? "" == "event" {
+            let toVC = segue.destination as! EventViewController
+            toVC.event = selectedEvent
         }
     }
 }
