@@ -10,6 +10,8 @@
 		0AF83BA6F8E28309EBE9C5DD /* Pods_DD_Connect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C40DCA39311EA51B5BB9B3F9 /* Pods_DD_Connect.framework */; };
 		BA1753091EABAFF800D53348 /* CurrentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1753081EABAFF800D53348 /* CurrentHelper.swift */; };
 		BA17530B1EABB67100D53348 /* TemperatureMeasures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA17530A1EABB67100D53348 /* TemperatureMeasures.swift */; };
+		BA5144CF1EABE1990010A593 /* CityStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5144CE1EABE1990010A593 /* CityStatusViewController.swift */; };
+		BA5144D11EABF9810010A593 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5144D01EABF9810010A593 /* Announcement.swift */; };
 		BA94D84A1EA484B900CEC58F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA94D8491EA484B900CEC58F /* LocationViewController.swift */; };
 		BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */; };
 		BAEC98771E9AD4DC00032A0A /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98761E9AD4DC00032A0A /* MenuScene.sks */; };
@@ -25,13 +27,14 @@
 		BAEC98941E9AD75400032A0A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98901E9AD75400032A0A /* Location.swift */; };
 		BAEC98951E9AD75400032A0A /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98911E9AD75400032A0A /* Review.swift */; };
 		BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98971E9B51D500032A0A /* LocationsViewController.swift */; };
-		BAEC989A1E9BCA5C00032A0A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98991E9BCA5C00032A0A /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		87D6F287451E540D40E157BD /* Pods-DD Connect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD Connect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DD Connect/Pods-DD Connect.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1753081EABAFF800D53348 /* CurrentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentHelper.swift; sourceTree = "<group>"; };
 		BA17530A1EABB67100D53348 /* TemperatureMeasures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureMeasures.swift; sourceTree = "<group>"; };
+		BA5144CE1EABE1990010A593 /* CityStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityStatusViewController.swift; sourceTree = "<group>"; };
+		BA5144D01EABF9810010A593 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		BA94D8491EA484B900CEC58F /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		BAEC98711E9AD4DC00032A0A /* DD Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +52,6 @@
 		BAEC98901E9AD75400032A0A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BAEC98911E9AD75400032A0A /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		BAEC98971E9B51D500032A0A /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
-		BAEC98991E9BCA5C00032A0A /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C40DCA39311EA51B5BB9B3F9 /* Pods_DD_Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DD_Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0C56E83D3B6E8FF01B726 /* Pods-DD Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-DD Connect/Pods-DD Connect.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,9 +112,9 @@
 				BAEC987A1E9AD4DC00032A0A /* MenuScene.swift */,
 				BA94D8491EA484B900CEC58F /* LocationViewController.swift */,
 				BAEC987C1E9AD4DC00032A0A /* MenuViewController.swift */,
+				BA5144CE1EABE1990010A593 /* CityStatusViewController.swift */,
 				BAEC98971E9B51D500032A0A /* LocationsViewController.swift */,
 				BAEC987E1E9AD4DC00032A0A /* Main.storyboard */,
-				BAEC98991E9BCA5C00032A0A /* HeaderView.swift */,
 				BAEC98961E9AD75900032A0A /* Model */,
 				BAEC98811E9AD4DC00032A0A /* Assets.xcassets */,
 				BAEC988C1E9AD67300032A0A /* GoogleService-Info.plist */,
@@ -125,6 +127,7 @@
 		BAEC98961E9AD75900032A0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BA5144D01EABF9810010A593 /* Announcement.swift */,
 				BA1753081EABAFF800D53348 /* CurrentHelper.swift */,
 				BA17530A1EABB67100D53348 /* TemperatureMeasures.swift */,
 				BAEC988E1E9AD75400032A0A /* FirebaseHelper.swift */,
@@ -263,8 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEC98921E9AD75400032A0A /* FirebaseHelper.swift in Sources */,
-				BAEC989A1E9BCA5C00032A0A /* HeaderView.swift in Sources */,
 				BA1753091EABAFF800D53348 /* CurrentHelper.swift in Sources */,
+				BA5144D11EABF9810010A593 /* Announcement.swift in Sources */,
 				BAEC987B1E9AD4DC00032A0A /* MenuScene.swift in Sources */,
 				BAEC98951E9AD75400032A0A /* Review.swift in Sources */,
 				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
@@ -272,6 +275,7 @@
 				BAEC987D1E9AD4DC00032A0A /* MenuViewController.swift in Sources */,
 				BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */,
 				BAEC98941E9AD75400032A0A /* Location.swift in Sources */,
+				BA5144CF1EABE1990010A593 /* CityStatusViewController.swift in Sources */,
 				BAEC98931E9AD75400032A0A /* Event.swift in Sources */,
 				BA17530B1EABB67100D53348 /* TemperatureMeasures.swift in Sources */,
 			);

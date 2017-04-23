@@ -2,17 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Back.png",
+      "filename" : "City Status.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Back@2x.png",
+      "filename" : "City Status@2x.png",
       "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
     }
   ],
   "info" : {

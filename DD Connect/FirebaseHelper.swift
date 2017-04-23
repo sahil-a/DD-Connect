@@ -70,6 +70,20 @@ class FirebaseHelper {
         }
     }
     
+    func getAnnouncements(_ completion: @escaping ([Announcement]?) -> Void) {
+        root.child("announcements").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let rawAnnouncements = (snapshot.value as? [String: String]) {
+                var announcements = [Announcement]()
+                for (title, description) in rawAnnouncements {
+                    announcements.append(Announcement(title: title, description: description))
+                }
+                completion(announcements)
+            }
+        }) { (_) in
+            completion(nil)
+        }
+    }
+    
     func upload(image: UIImage, to: String, completion: @escaping (Bool) -> Void) {
         let storage = FIRStorage.storage(url: "gs://dd-connect.appspot.com/")
         let childRef = storage.reference().child(to)

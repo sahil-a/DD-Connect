@@ -2,16 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Spaceship.png"
+      "filename" : "Locations.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Locations@2x.png",
       "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
     }
   ],
   "info" : {

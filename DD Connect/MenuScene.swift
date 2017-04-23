@@ -15,7 +15,7 @@ class MenuScene: SKScene {
     private var selectedNode: String = ""
     private var selectedLocation: CGPoint!
     var menuDelegate: MenuSceneDelegate?
-    private var menuTitles: [String] = ["Locations", "City Status", "Events", "----"]
+    private var menuTitles: [String] = ["City Status", "Events", "Locations"]
     
     func tapped(_ sender: UITapGestureRecognizer) {
         if sender.state == .recognized {
@@ -32,35 +32,37 @@ class MenuScene: SKScene {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         view.addGestureRecognizer(tapGestureRecognizer)
         
-        // remove gravity and add edge boundary physics body
+        // remove gravity
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         
         // setup center node with physics body
         let centerNodeRadius = frame.width * 0.3
+        let logo = SKTexture(imageNamed: "DD Logo")
         centerNode = SKShapeNode(circleOfRadius: centerNodeRadius)
-        centerNode.fillColor = UIColor(red:0.35, green:0.58, blue:0.97, alpha:1.00)
+        centerNode.fillTexture = logo
+        centerNode.fillColor = UIColor.white
         centerNode.physicsBody = SKPhysicsBody(circleOfRadius: centerNodeRadius)
-        centerNode.physicsBody?.collisionBitMask = 0
         centerNode.physicsBody?.mass = 1
         centerNode.physicsBody?.restitution = 0.75
         centerNode.physicsBody?.isDynamic = false
+        centerNode.physicsBody?.categoryBitMask = 0b0001
         addChild(centerNode)
         
        
         let otherNodeRadius = frame.width * 0.15
-        let locations = [CGPoint(x: frame.width / 2 - otherNodeRadius - 50, y: otherNodeRadius + 50 - frame.height / 2),
-                         CGPoint(x: -frame.width / 2 + otherNodeRadius + 50, y: otherNodeRadius + 50 - frame.height / 2),
-                         CGPoint(x: frame.width / 2 - otherNodeRadius - 50, y: -otherNodeRadius - 50 + frame.height / 2),
-                         CGPoint(x: -frame.width / 2 + otherNodeRadius + 50, y: -otherNodeRadius - 50 + frame.height / 2)]
+        let locations = [CGPoint(x: 4, y: otherNodeRadius + 80 - frame.height / 2),
+                         CGPoint(x: frame.width / 2 - otherNodeRadius - 50, y: -otherNodeRadius - 80 + frame.height / 2),
+                         CGPoint(x: -frame.width / 2 + otherNodeRadius + 50, y: -otherNodeRadius - 80 + frame.height / 2)]
         var x = 0
         for location in locations {
             x += 1
             let positiveX = location.x > 0
+            let texture = SKTexture(imageNamed: menuTitles[x-1])
             let otherNode = SKShapeNode(circleOfRadius: otherNodeRadius)
-            otherNode.fillColor = UIColor(red:1.00, green:0.65, blue:0.60, alpha:1.00)
+            otherNode.fillColor = UIColor.white
+            otherNode.fillTexture = texture
             otherNode.physicsBody = SKPhysicsBody(circleOfRadius: otherNodeRadius)
-            otherNode.physicsBody?.collisionBitMask = 0
+            otherNode.physicsBody?.collisionBitMask = 0b0001
             otherNode.physicsBody?.mass = 1
             otherNode.physicsBody?.restitution = 0.75
             otherNode.name = menuTitles[x-1]
@@ -113,7 +115,8 @@ class MenuScene: SKScene {
     func getLinkNode(length: CGFloat) -> SKShapeNode {
         let linkNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: length, height: 10))
         linkNode.physicsBody = SKPhysicsBody(rectangleOf: linkNode.frame.size)
-        linkNode.physicsBody?.collisionBitMask = 0
+        linkNode.physicsBody?.collisionBitMask = 0b0000
+        linkNode.physicsBody?.categoryBitMask = 0b0010
         linkNode.fillColor = UIColor.gray
         linkNode.physicsBody?.mass = 0.3
         linkNode.zPosition = -10
