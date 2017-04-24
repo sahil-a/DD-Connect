@@ -45,21 +45,11 @@ class FirebaseHelper {
             if let rawLocations = (snapshot.value as? [String: [String: Any]]) {
                 var locations = [Location]()
                 for (name, rawLocation) in rawLocations {
-                    var reviews = [Review]()
-                    let rawReviews = (rawLocation["reviews"] as? [String: [String: Any]]) ?? [:]
-                    for (title, rawReview) in rawReviews {
-                        let review = Review(title: title,
-                                            body: rawReview["body"] as! String,
-                                            name: rawReview["name"] as! String,
-                                            stars: rawReview["stars"] as! Int)
-                        reviews.append(review)
-                    }
                     let location = Location(name: name,
                                             address: rawLocation["address"] as! String,
                                             description: rawLocation["description"] as! String,
                                             likes: rawLocation["likes"] as! Int,
                                             dislikes: rawLocation["dislikes"] as! Int,
-                                            reviews: reviews,
                                             imageRef: rawLocation["imageRef"] as! String,
                                             hours: rawLocation["hours"] as! String,
                                             thumbnailRef: rawLocation["thumbnailRef"] as! String)
@@ -74,6 +64,20 @@ class FirebaseHelper {
     
     func getAnnouncements(_ completion: @escaping ([Announcement]?) -> Void) {
         root.child("announcements").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let rawAnnouncements = (snapshot.value as? [String: String]) {
+                var announcements = [Announcement]()
+                for (title, description) in rawAnnouncements {
+                    announcements.append(Announcement(title: title, description: description))
+                }
+                completion(announcements)
+            }
+        }) { (_) in
+            completion(nil)
+        }
+    }
+    
+    func getStaffAnnouncements(_ completion: @escaping ([Announcement]?) -> Void) {
+        root.child("staffAnnouncements").observeSingleEvent(of: .value, with: { (snapshot) in
             if let rawAnnouncements = (snapshot.value as? [String: String]) {
                 var announcements = [Announcement]()
                 for (title, description) in rawAnnouncements {

@@ -27,6 +27,7 @@
 		BA8A68B11EAD73710038F9AD /* ReportCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B01EAD73710038F9AD /* ReportCategoriesViewController.swift */; };
 		BA8A68B31EAD75790038F9AD /* ReportCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */; };
 		BA8A68B51EAD78C00038F9AD /* ViewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */; };
+		BA8A68B71EAD84780038F9AD /* StaffAnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B61EAD84780038F9AD /* StaffAnnouncementsViewController.swift */; };
 		BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */; };
 		BAEC98771E9AD4DC00032A0A /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98761E9AD4DC00032A0A /* MenuScene.sks */; };
 		BAEC98791E9AD4DC00032A0A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98781E9AD4DC00032A0A /* Actions.sks */; };
@@ -39,7 +40,6 @@
 		BAEC98921E9AD75400032A0A /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC988E1E9AD75400032A0A /* FirebaseHelper.swift */; };
 		BAEC98931E9AD75400032A0A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC988F1E9AD75400032A0A /* Event.swift */; };
 		BAEC98941E9AD75400032A0A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98901E9AD75400032A0A /* Location.swift */; };
-		BAEC98951E9AD75400032A0A /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98911E9AD75400032A0A /* Review.swift */; };
 		BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98971E9B51D500032A0A /* LocationsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +64,7 @@
 		BA8A68B01EAD73710038F9AD /* ReportCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoriesViewController.swift; sourceTree = "<group>"; };
 		BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryViewController.swift; sourceTree = "<group>"; };
 		BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewReportViewController.swift; sourceTree = "<group>"; };
+		BA8A68B61EAD84780038F9AD /* StaffAnnouncementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffAnnouncementsViewController.swift; sourceTree = "<group>"; };
 		BAEC98711E9AD4DC00032A0A /* DD Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC98761E9AD4DC00032A0A /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		BAEC988E1E9AD75400032A0A /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		BAEC988F1E9AD75400032A0A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BAEC98901E9AD75400032A0A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		BAEC98911E9AD75400032A0A /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		BAEC98971E9B51D500032A0A /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		C40DCA39311EA51B5BB9B3F9 /* Pods_DD_Connect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DD_Connect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0C56E83D3B6E8FF01B726 /* Pods-DD Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-DD Connect/Pods-DD Connect.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +130,7 @@
 		BA8A68A71EACE8BA0038F9AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BA8A68B61EAD84780038F9AD /* StaffAnnouncementsViewController.swift */,
 				BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */,
 				BA8A68B01EAD73710038F9AD /* ReportCategoriesViewController.swift */,
 				BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */,
@@ -190,7 +191,6 @@
 				BA8A68AA1EAD25A60038F9AD /* Official.swift */,
 				BAEC988F1E9AD75400032A0A /* Event.swift */,
 				BAEC98901E9AD75400032A0A /* Location.swift */,
-				BAEC98911E9AD75400032A0A /* Review.swift */,
 				BA8A689E1EACD38A0038F9AD /* Report.swift */,
 			);
 			name = Model;
@@ -334,7 +334,6 @@
 				BAEC987B1E9AD4DC00032A0A /* MenuScene.swift in Sources */,
 				BA8A68A21EACE7B60038F9AD /* CustomTextField.swift in Sources */,
 				BA8A689F1EACD38A0038F9AD /* Report.swift in Sources */,
-				BAEC98951E9AD75400032A0A /* Review.swift in Sources */,
 				BA8A68A91EAD1C870038F9AD /* ContactViewController.swift in Sources */,
 				BA8A68991EAC5BD60038F9AD /* EventViewController.swift in Sources */,
 				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
@@ -343,6 +342,7 @@
 				BA8A68AF1EAD489E0038F9AD /* StaffListViewController.swift in Sources */,
 				BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */,
 				BAEC98941E9AD75400032A0A /* Location.swift in Sources */,
+				BA8A68B71EAD84780038F9AD /* StaffAnnouncementsViewController.swift in Sources */,
 				BA8A68B51EAD78C00038F9AD /* ViewReportViewController.swift in Sources */,
 				BA8A689D1EACCEDB0038F9AD /* OptionButton.swift in Sources */,
 				BA5144CF1EABE1990010A593 /* CityStatusViewController.swift in Sources */,

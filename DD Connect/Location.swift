@@ -16,7 +16,6 @@ struct Location {
     let description: String
     var likes: Int
     var dislikes: Int
-    let reviews: [Review]
     let imageRef: String
     let hours: String
     let thumbnailRef: String

@@ -77,7 +77,7 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
                 break
             }
         } else if mode == .Staff {
-            let available = ["Staff List", "Reports"]
+            let available = ["Staff List", "Reports", "Announcements"]
             switch title {
             case let x where available.contains(x):
                 performSegue(withIdentifier: x, sender: self)

@@ -1,5 +1,5 @@
 //
-//  ReportCategoryViewController.swift
+//  StaffAnnouncementsViewController.swift
 //  DD Connect
 //
 //  Created by Sahil Ambardekar on 4/23/17.
@@ -8,40 +8,32 @@
 
 import UIKit
 
-class ReportCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReportDeleteObserver {
+class StaffAnnouncementsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var reportType: ReportType!
-    var selectedReport: Report!
-    private var reports: [Report] = []
+    private var announcements: [Announcement] = []
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // load reports from firebase
+        // load announcements from firebase
         let firebaseHelper = FirebaseHelper()
-        firebaseHelper.getReports { reports in
-            if let reports = reports {
-                self.reports = reports.filter { $0.type == self.reportType }
+        firebaseHelper.getStaffAnnouncements { announcements in
+            if let announcements = announcements {
+                self.announcements = announcements
                 self.collectionView.reloadData()
             }
         }
     }
     
     @IBAction func back(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
-    }
-    
-    func didDeleteReport(report: Report) {
-        reports = reports.filter { $0.title != report.title }
-        collectionView.reloadData()
-        collectionView.setNeedsDisplay()
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return reports.count    }
+        return announcements.count    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -49,14 +41,9 @@ class ReportCategoryViewController: UIViewController, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let width = collectionView.frame.width - 30
-        let height: CGFloat = 66
+        let height: CGFloat = 96
         let size = CGSize(width: width, height: height)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        for subview in cell.subviews {
-            if subview.tag == 20 {
-                subview.removeFromSuperview()
-            }
-        }
         cell.frame.size = size
         cell.layer.cornerRadius = cell.frame.height / 2
         cell.layer.shadowOffset = CGSize.zero
@@ -64,13 +51,18 @@ class ReportCategoryViewController: UIViewController, UICollectionViewDelegate, 
         cell.layer.shadowRadius = 3
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.masksToBounds = false
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
-        label.tag = 20
+        let label = UILabel(frame: CGRect(x: 25, y: 0, width: cell.frame.width * 0.25 , height: cell.frame.height))
         label.font = label.font.withSize(16)
-        label.textAlignment = .center
+        label.numberOfLines = 4
         label.textColor = UIColor.black.withAlphaComponent(0.7)
-        label.text = reports[indexPath.row].title
+        label.text = announcements[indexPath.row].title
         cell.addSubview(label)
+        let secondaryLabel = UILabel(frame: CGRect(x: cell.frame.width * 0.25 + 25 + 20, y: 0, width: cell.frame.width * 0.75 - 75, height: cell.frame.height))
+        secondaryLabel.font = secondaryLabel.font.withSize(13.5)
+        secondaryLabel.textColor = UIColor.black.withAlphaComponent(0.4)
+        secondaryLabel.text = announcements[indexPath.row].description
+        secondaryLabel.numberOfLines = 6
+        cell.addSubview(secondaryLabel)
         return cell
     }
     
@@ -86,23 +78,6 @@ class ReportCategoryViewController: UIViewController, UICollectionViewDelegate, 
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedReport = reports[indexPath.row]
-        performSegue(withIdentifier: "report", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "report" {
-            let toVC = segue.destination as! ViewReportViewController
-            toVC.report = selectedReport
-            toVC.deleteObserver = self
-        }
-    }
-    
-}
-
-protocol ReportDeleteObserver {
-    func didDeleteReport(report: Report)
 }
 
 

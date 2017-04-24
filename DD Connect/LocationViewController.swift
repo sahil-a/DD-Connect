@@ -19,17 +19,6 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    //stars
-    @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
-    @IBOutlet weak var star4: UIImageView!
-    @IBOutlet weak var star5: UIImageView!
-    
-    var stars: [UIImageView] {
-        return [star1, star2, star3, star4, star5]
-    }
-    
     var location: Location!
     
     override func viewDidLoad() {
@@ -46,21 +35,6 @@ class LocationViewController: UIViewController {
         firebaseHelper.download(from: location.imageRef) { image in
             if let image = image {
                 self.imageView.image = image
-            }
-        }
-        
-        // fill in review stars
-        var starsDoubled = (location.reviews.count == 0) ? 0 : location.reviews.reduce(0) { $0 + $1.stars * 2 } / location.reviews.count
-        for star in stars {
-            if starsDoubled >= 2 {
-                star.image = #imageLiteral(resourceName: "Star")
-                starsDoubled -= 2
-            } else if starsDoubled >= 1 {
-                star.image = #imageLiteral(resourceName: "Half-Star")
-                starsDoubled -= 1
-            } else {
-                star.image = #imageLiteral(resourceName: "Star")
-                star.alpha = 0.3
             }
         }
         

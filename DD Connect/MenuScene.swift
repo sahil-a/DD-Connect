@@ -24,7 +24,7 @@ class MenuScene: SKScene {
         case .Hero:
             return ["Report", "Contact"]
         case .Staff:
-            return ["Staff List", "Reports"]
+            return ["Staff List", "Reports", "Announcements"]
         }
     }
     
