@@ -21,6 +21,12 @@
 		BA8A68A21EACE7B60038F9AD /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68A01EACE7B60038F9AD /* CustomTextField.swift */; };
 		BA8A68A31EACE7B60038F9AD /* CustomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8A68A11EACE7B60038F9AD /* CustomTextField.xib */; };
 		BA8A68A51EACE88F0038F9AD /* WriteReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68A41EACE88F0038F9AD /* WriteReportViewController.swift */; };
+		BA8A68A91EAD1C870038F9AD /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68A81EAD1C870038F9AD /* ContactViewController.swift */; };
+		BA8A68AB1EAD25A60038F9AD /* Official.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68AA1EAD25A60038F9AD /* Official.swift */; };
+		BA8A68AF1EAD489E0038F9AD /* StaffListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68AE1EAD489E0038F9AD /* StaffListViewController.swift */; };
+		BA8A68B11EAD73710038F9AD /* ReportCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B01EAD73710038F9AD /* ReportCategoriesViewController.swift */; };
+		BA8A68B31EAD75790038F9AD /* ReportCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */; };
+		BA8A68B51EAD78C00038F9AD /* ViewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */; };
 		BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */; };
 		BAEC98771E9AD4DC00032A0A /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98761E9AD4DC00032A0A /* MenuScene.sks */; };
 		BAEC98791E9AD4DC00032A0A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98781E9AD4DC00032A0A /* Actions.sks */; };
@@ -52,6 +58,12 @@
 		BA8A68A01EACE7B60038F9AD /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BA8A68A11EACE7B60038F9AD /* CustomTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextField.xib; sourceTree = "<group>"; };
 		BA8A68A41EACE88F0038F9AD /* WriteReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReportViewController.swift; sourceTree = "<group>"; };
+		BA8A68A81EAD1C870038F9AD /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		BA8A68AA1EAD25A60038F9AD /* Official.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Official.swift; sourceTree = "<group>"; };
+		BA8A68AE1EAD489E0038F9AD /* StaffListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffListViewController.swift; sourceTree = "<group>"; };
+		BA8A68B01EAD73710038F9AD /* ReportCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoriesViewController.swift; sourceTree = "<group>"; };
+		BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryViewController.swift; sourceTree = "<group>"; };
+		BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewReportViewController.swift; sourceTree = "<group>"; };
 		BAEC98711E9AD4DC00032A0A /* DD Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC98761E9AD4DC00032A0A /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -118,6 +130,11 @@
 		BA8A68A71EACE8BA0038F9AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */,
+				BA8A68B01EAD73710038F9AD /* ReportCategoriesViewController.swift */,
+				BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */,
+				BA8A68AE1EAD489E0038F9AD /* StaffListViewController.swift */,
+				BA8A68A81EAD1C870038F9AD /* ContactViewController.swift */,
 				BA8A68941EAC34170038F9AD /* LocationViewController.swift */,
 				BA8A68961EAC5BCD0038F9AD /* EventsViewController.swift */,
 				BA8A68981EAC5BD60038F9AD /* EventViewController.swift */,
@@ -170,6 +187,7 @@
 				BA1753081EABAFF800D53348 /* CurrentHelper.swift */,
 				BA17530A1EABB67100D53348 /* TemperatureMeasures.swift */,
 				BAEC988E1E9AD75400032A0A /* FirebaseHelper.swift */,
+				BA8A68AA1EAD25A60038F9AD /* Official.swift */,
 				BAEC988F1E9AD75400032A0A /* Event.swift */,
 				BAEC98901E9AD75400032A0A /* Location.swift */,
 				BAEC98911E9AD75400032A0A /* Review.swift */,
@@ -306,20 +324,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8A68B11EAD73710038F9AD /* ReportCategoriesViewController.swift in Sources */,
 				BA8A689B1EACC9190038F9AD /* ReportViewController.swift in Sources */,
+				BA8A68B31EAD75790038F9AD /* ReportCategoryViewController.swift in Sources */,
 				BAEC98921E9AD75400032A0A /* FirebaseHelper.swift in Sources */,
+				BA8A68AB1EAD25A60038F9AD /* Official.swift in Sources */,
 				BA1753091EABAFF800D53348 /* CurrentHelper.swift in Sources */,
 				BA5144D11EABF9810010A593 /* Announcement.swift in Sources */,
 				BAEC987B1E9AD4DC00032A0A /* MenuScene.swift in Sources */,
 				BA8A68A21EACE7B60038F9AD /* CustomTextField.swift in Sources */,
 				BA8A689F1EACD38A0038F9AD /* Report.swift in Sources */,
 				BAEC98951E9AD75400032A0A /* Review.swift in Sources */,
+				BA8A68A91EAD1C870038F9AD /* ContactViewController.swift in Sources */,
 				BA8A68991EAC5BD60038F9AD /* EventViewController.swift in Sources */,
 				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
 				BAEC987D1E9AD4DC00032A0A /* MenuViewController.swift in Sources */,
 				BA8A68951EAC34170038F9AD /* LocationViewController.swift in Sources */,
+				BA8A68AF1EAD489E0038F9AD /* StaffListViewController.swift in Sources */,
 				BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */,
 				BAEC98941E9AD75400032A0A /* Location.swift in Sources */,
+				BA8A68B51EAD78C00038F9AD /* ViewReportViewController.swift in Sources */,
 				BA8A689D1EACCEDB0038F9AD /* OptionButton.swift in Sources */,
 				BA5144CF1EABE1990010A593 /* CityStatusViewController.swift in Sources */,
 				BA8A68A51EACE88F0038F9AD /* WriteReportViewController.swift in Sources */,

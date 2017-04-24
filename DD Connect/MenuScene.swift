@@ -24,7 +24,7 @@ class MenuScene: SKScene {
         case .Hero:
             return ["Report", "Contact"]
         case .Staff:
-            return staffMenuItems
+            return ["Staff List", "Reports"]
         }
     }
     
@@ -48,7 +48,7 @@ class MenuScene: SKScene {
         
         // setup center node with physics body
         let centerNodeRadius = frame.width * 0.3
-        let logo = SKTexture(imageNamed: "DD Logo")
+        let logo = SKTexture(imageNamed: "DD Logo Blue")
         centerNode = SKShapeNode(circleOfRadius: centerNodeRadius)
         centerNode.fillTexture = logo
         centerNode.fillColor = UIColor.white
@@ -58,6 +58,8 @@ class MenuScene: SKScene {
         centerNode.physicsBody?.isDynamic = false
         centerNode.physicsBody?.categoryBitMask = 0b0001
         addChild(centerNode)
+        let colors = [UIColor(red:0.88, green:0.92, blue:0.95, alpha:1.00), UIColor(red:0.98, green:0.95, blue:0.94, alpha:1.00), UIColor(red:0.90, green:0.95, blue:0.93, alpha:1.00)]
+        backgroundColor = colors[[.Information, .Hero, .Staff].index(of: mode)!]
         setupOtherNodes()
     }
     
@@ -67,12 +69,12 @@ class MenuScene: SKScene {
         let locations = (menuTitles.count == 3) ? [CGPoint(x: 4, y: otherNodeRadius + 80 - frame.height / 2),
                          CGPoint(x: frame.width / 2 - otherNodeRadius - 50, y: -otherNodeRadius - 80 + frame.height / 2),
                          CGPoint(x: -frame.width / 2 + otherNodeRadius + 50, y: -otherNodeRadius - 80 + frame.height / 2)] : [CGPoint(x: 4, y: otherNodeRadius + 80 - frame.height / 2),
-                                                                                                                              CGPoint(x: -4, y: -otherNodeRadius - 80 + frame.height / 2)]
+                                                                                                                            CGPoint(x: -4, y: -otherNodeRadius - 80 + frame.height / 2)]
+        var otherNodes: [SKNode] = []
         var x = 0
         for location in locations {
             x += 1
             let name = menuTitles[x-1]
-            let positiveX = location.x > 0
             let texture = SKTexture(imageNamed: name)
             let otherNode = SKShapeNode(circleOfRadius: otherNodeRadius)
             otherNode.fillColor = UIColor.white
@@ -84,8 +86,16 @@ class MenuScene: SKScene {
             otherNode.name = menuTitles[x-1]
             otherNode.physicsBody?.linearDamping = 6
             otherNode.position = location
-            
+            otherNodes.append(otherNode)
             addChild(otherNode)
+        }
+        
+        x = 0
+        for otherNode in otherNodes {
+            let location = locations[x]
+            x += 1
+            let name = menuTitles[x-1]
+            let positiveX = location.x > 0
             
             let links = 8
             let dx = otherNode.position.x - centerNode.position.x
@@ -155,6 +165,8 @@ class MenuScene: SKScene {
         physicsWorld.removeAllJoints()
         physicsWorld.gravity = CGVector(dx: 0, dy: 30)
         self.centerNode.fillTexture = SKTexture(imageNamed: to.rawValue)
+        let colors = [UIColor(red:0.88, green:0.92, blue:0.95, alpha:1.00), UIColor(red:0.98, green:0.95, blue:0.94, alpha:1.00), UIColor(red:0.90, green:0.95, blue:0.93, alpha:1.00)]
+        backgroundColor = colors[[.Information, .Hero, .Staff].index(of: to)!]
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
             for child in (self.scene!.children) {

@@ -59,7 +59,6 @@ class FirebaseHelper {
                                             description: rawLocation["description"] as! String,
                                             likes: rawLocation["likes"] as! Int,
                                             dislikes: rawLocation["dislikes"] as! Int,
-                                            category: LocationType(rawValue: rawLocation["category"] as! String)!,
                                             reviews: reviews,
                                             imageRef: rawLocation["imageRef"] as! String,
                                             hours: rawLocation["hours"] as! String,
@@ -126,12 +125,52 @@ class FirebaseHelper {
         })
     }
     
+    func checkStaffLogin(username: String, password: String, completion: @escaping (Bool, Official?) -> Void) {
+        root.child("officials").child(username).child("hashedPassword").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let hashedPassword = snapshot.value as? String {
+                if (hashedPassword == password.md5()) {
+                    self.getOfficials { officials in
+                        if let officials = officials {
+                            for official in officials {
+                                if official.username == username {
+                                    completion(true, official)
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    completion(false, nil)
+                }
+            } else {
+                completion(false, nil)
+            }
+        })
+    }
+    
+    func getOfficials(completion: @escaping ([Official]?) -> Void) {
+        root.child("officials").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let rawOfficials = (snapshot.value as? [String: [String: String]]) {
+                var officials = [Official]()
+                for (username, rawOfficial) in rawOfficials {
+                    let official = Official(name: rawOfficial["name"]!,
+                                            position: rawOfficial["position"]!,
+                                            phone: rawOfficial["phone"],
+                                            email: rawOfficial["email"], username: username)
+                    officials.append(official)
+                }
+                completion(officials)
+            }
+        }) { (_) in
+            completion(nil)
+        }
+    }
+    
     func getReports(completion: @escaping ([Report]?) -> Void) {
         root.child("reports").observeSingleEvent(of: .value, with: { (snapshot) in
             if let rawReports = (snapshot.value as? [String: [String: String]]) {
                 var reports = [Report]()
                 for (title, rawReport) in rawReports {
-                    let report = Report(image: nil, imageRef: rawReport["imageRef"], body: rawReport["body"]!, title: title, type: ReportType(rawValue: rawReport["imageRef"]!)!)
+                    let report = Report(image: nil, imageRef: rawReport["imageRef"], body: rawReport["body"]!, title: title, type: ReportType(rawValue: rawReport["type"]!)!)
                     reports.append(report)
                 }
                 completion(reports)

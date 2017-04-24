@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import CryptoSwift
 
 class MenuViewController: UIViewController, MenuSceneDelegate {
     
@@ -30,9 +31,8 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
             }
             
             view.ignoresSiblingOrder = true
-            // TODO: remove these stats once development is complete
-            view.showsFPS = true
-            view.showsNodeCount = true
+            view.showsFPS = false
+            view.showsNodeCount = false
         }
     }
 
@@ -69,7 +69,15 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
                 break
             }
         } else if mode == .Hero {
-            let available = ["Report"]
+            let available = ["Report", "Contact"]
+            switch title {
+            case let x where available.contains(x):
+                performSegue(withIdentifier: x, sender: self)
+            default:
+                break
+            }
+        } else if mode == .Staff {
+            let available = ["Staff List", "Reports"]
             switch title {
             case let x where available.contains(x):
                 performSegue(withIdentifier: x, sender: self)
@@ -80,29 +88,63 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
     }
     
     @IBAction func firstLogoClicked() {
-        let modes: [Mode] = [.Information, .Hero, .Staff]
-        let currentIndex = modes.index(of: mode)!
-        let nextIndex = (currentIndex + 1) % 3
-        let firstIndex = (nextIndex + 1) % 3
-        let secondIndex = (firstIndex + 1) % 3
-        ((view as! SKView).scene as! MenuScene).switchMode(to: modes[nextIndex])
-        firstLogo.setImage(UIImage(named: modes[firstIndex].rawValue), for: .normal)
-        secondLogo.setImage(UIImage(named: modes[secondIndex].rawValue), for: .normal)
-        mode = modes[nextIndex]
-        disableModeSwitching()
+        move(1)
     }
     
     @IBAction func secondLogoClicked() {
+        move(2)
+    }
+    
+    func move(_ steps: Int) {
         let modes: [Mode] = [.Information, .Hero, .Staff]
         let currentIndex = modes.index(of: mode)!
-        let nextIndex = (currentIndex + 2) % 3
-        let firstIndex = (nextIndex + 1) % 3
-        let secondIndex = (firstIndex + 1) % 3
-        ((view as! SKView).scene as! MenuScene).switchMode(to: modes[nextIndex])
-        firstLogo.setImage(UIImage(named: modes[firstIndex].rawValue), for: .normal)
-        secondLogo.setImage(UIImage(named: modes[secondIndex].rawValue), for: .normal)
-        mode = modes[nextIndex]
-        disableModeSwitching()
+        let nextIndex = (currentIndex + steps) % 3
+        if modes[nextIndex] == .Staff {
+            let alertVC = UIAlertController(title: "Staff Authentication", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+                alert -> Void in
+                let usernameField = alertVC.textFields![0]
+                let passwordField = alertVC.textFields![1]
+                let helper = FirebaseHelper()
+                helper.checkStaffLogin(username: usernameField.text!, password: passwordField.text!) { success, official in
+                    if success {
+                        let firstIndex = (nextIndex + 1) % 3
+                        let secondIndex = (firstIndex + 1) % 3
+                        ((self.view as! SKView).scene as! MenuScene).switchMode(to: modes[nextIndex])
+                        self.firstLogo.setImage(UIImage(named: modes[firstIndex].rawValue), for: .normal)
+                        self.secondLogo.setImage(UIImage(named: modes[secondIndex].rawValue), for: .normal)
+                        self.mode = modes[nextIndex]
+                        self.disableModeSwitching()
+                        (UIApplication.shared.delegate as! AppDelegate).currentOfficial = official!
+                    } else {
+                        let wrongAlert = UIAlertController(title: "Incorrect Credentials", message: "Your credentials do not match any registered users. If you have forgotten your credentials please contact your supervisor", preferredStyle: .alert)
+                        wrongAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(wrongAlert, animated: true)
+                    }
+                }
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alertVC.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = "Username"
+            }
+            alertVC.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = "Password"
+            }
+            
+            alertVC.addAction(okAction)
+            alertVC.addAction(cancelAction)
+            present(alertVC, animated: true)
+        } else {
+            let firstIndex = (nextIndex + 1) % 3
+            let secondIndex = (firstIndex + 1) % 3
+            ((view as! SKView).scene as! MenuScene).switchMode(to: modes[nextIndex])
+            firstLogo.setImage(UIImage(named: modes[firstIndex].rawValue), for: .normal)
+            secondLogo.setImage(UIImage(named: modes[secondIndex].rawValue), for: .normal)
+            mode = modes[nextIndex]
+            disableModeSwitching()
+        }
     }
     
     func disableModeSwitching() {
@@ -117,7 +159,7 @@ class MenuViewController: UIViewController, MenuSceneDelegate {
 
 
 enum Mode: String {
-    case Information = "DD Logo"
+    case Information = "DD Logo Blue"
     case Hero = "DD Logo Red"
     case Staff = "DD Logo Green"
 }

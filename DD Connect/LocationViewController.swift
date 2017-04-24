@@ -50,7 +50,7 @@ class LocationViewController: UIViewController {
         }
         
         // fill in review stars
-        var starsDoubled = location.reviews.reduce(0) { $0 + $1.stars * 2 } / location.reviews.count
+        var starsDoubled = (location.reviews.count == 0) ? 0 : location.reviews.reduce(0) { $0 + $1.stars * 2 } / location.reviews.count
         for star in stars {
             if starsDoubled >= 2 {
                 star.image = #imageLiteral(resourceName: "Star")

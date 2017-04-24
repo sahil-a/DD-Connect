@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 struct Report {
     let image: UIImage?
@@ -15,6 +17,11 @@ struct Report {
     let body: String
     let title: String
     let type: ReportType
+    
+    func delete() {
+        let root: FIRDatabaseReference = FIRDatabase.database().reference()
+        root.child("reports").child(title).removeValue()
+    }
 }
 
 enum ReportType: String {

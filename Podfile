@@ -7,6 +7,7 @@ target 'DD Connect' do
 pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Alamofire', '~> 4.4'
+  pod 'CryptoSwift'
 
 pod 'Firebase/Storage'
   # Pods for DD Connect

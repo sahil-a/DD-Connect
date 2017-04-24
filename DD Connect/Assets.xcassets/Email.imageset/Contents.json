@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "DD Logo.png",
+      "filename" : "Email.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "DD Logo@2x.png",
+      "filename" : "Email@2x.png",
       "scale" : "2x"
     }
   ],

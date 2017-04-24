@@ -16,7 +16,6 @@ struct Location {
     let description: String
     var likes: Int
     var dislikes: Int
-    let category: LocationType
     let reviews: [Review]
     let imageRef: String
     let hours: String
@@ -40,10 +39,4 @@ struct Location {
         root.child("locations/\(name)/likes").setValue(likes)
         root.child("locations/\(name)/dislikes").setValue(dislikes)
     }
-}
-
-enum LocationType: String {
-    case Shopping
-    case Food
-    case Sightseeing
 }
