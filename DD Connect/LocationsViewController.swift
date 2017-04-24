@@ -16,10 +16,13 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // retrieve locations from database
         let helper = FirebaseHelper()
         helper.getLocations { (locations) in
             if let locations = locations {
                 self.locations = locations
+                // reload collection view using the newly found locations
                 self.collectionView.reloadData()
             }
         }
@@ -96,6 +99,7 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // save to location so it can be passed on to the next view controller which will display its details
         selectedLocation = locations[indexPath.row]
         performSegue(withIdentifier: "location", sender: self)
     }
@@ -103,6 +107,7 @@ class LocationsViewController: UIViewController, UICollectionViewDelegate, UICol
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ?? "" == "location" {
             let toVC = segue.destination as! LocationViewController
+            // save the selectedLocation into the next view controller
             toVC.location =  selectedLocation
         }
     }

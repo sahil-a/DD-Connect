@@ -16,7 +16,6 @@
 		BA8A68971EAC5BCD0038F9AD /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68961EAC5BCD0038F9AD /* EventsViewController.swift */; };
 		BA8A68991EAC5BD60038F9AD /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68981EAC5BD60038F9AD /* EventViewController.swift */; };
 		BA8A689B1EACC9190038F9AD /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A689A1EACC9190038F9AD /* ReportViewController.swift */; };
-		BA8A689D1EACCEDB0038F9AD /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A689C1EACCEDB0038F9AD /* OptionButton.swift */; };
 		BA8A689F1EACD38A0038F9AD /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A689E1EACD38A0038F9AD /* Report.swift */; };
 		BA8A68A21EACE7B60038F9AD /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68A01EACE7B60038F9AD /* CustomTextField.swift */; };
 		BA8A68A31EACE7B60038F9AD /* CustomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8A68A11EACE7B60038F9AD /* CustomTextField.xib */; };
@@ -28,6 +27,7 @@
 		BA8A68B31EAD75790038F9AD /* ReportCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */; };
 		BA8A68B51EAD78C00038F9AD /* ViewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */; };
 		BA8A68B71EAD84780038F9AD /* StaffAnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A68B61EAD84780038F9AD /* StaffAnnouncementsViewController.swift */; };
+		BAE2075A1EAE7C02003916C7 /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE207591EAE7C02003916C7 /* OptionButton.swift */; };
 		BAEC98751E9AD4DC00032A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */; };
 		BAEC98771E9AD4DC00032A0A /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98761E9AD4DC00032A0A /* MenuScene.sks */; };
 		BAEC98791E9AD4DC00032A0A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BAEC98781E9AD4DC00032A0A /* Actions.sks */; };
@@ -53,7 +53,6 @@
 		BA8A68961EAC5BCD0038F9AD /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		BA8A68981EAC5BD60038F9AD /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		BA8A689A1EACC9190038F9AD /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
-		BA8A689C1EACCEDB0038F9AD /* OptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionButton.swift; path = ../OptionButton.swift; sourceTree = "<group>"; };
 		BA8A689E1EACD38A0038F9AD /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		BA8A68A01EACE7B60038F9AD /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BA8A68A11EACE7B60038F9AD /* CustomTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextField.xib; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		BA8A68B21EAD75790038F9AD /* ReportCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryViewController.swift; sourceTree = "<group>"; };
 		BA8A68B41EAD78C00038F9AD /* ViewReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewReportViewController.swift; sourceTree = "<group>"; };
 		BA8A68B61EAD84780038F9AD /* StaffAnnouncementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffAnnouncementsViewController.swift; sourceTree = "<group>"; };
+		BAE207591EAE7C02003916C7 /* OptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
 		BAEC98711E9AD4DC00032A0A /* DD Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC98741E9AD4DC00032A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC98761E9AD4DC00032A0A /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 				BAEC98781E9AD4DC00032A0A /* Actions.sks */,
 				BAEC987A1E9AD4DC00032A0A /* MenuScene.swift */,
 				BA8A68A01EACE7B60038F9AD /* CustomTextField.swift */,
+				BAE207591EAE7C02003916C7 /* OptionButton.swift */,
 				BA8A68A11EACE7B60038F9AD /* CustomTextField.xib */,
-				BA8A689C1EACCEDB0038F9AD /* OptionButton.swift */,
 				BAEC987E1E9AD4DC00032A0A /* Main.storyboard */,
 			);
 			name = View;
@@ -336,6 +336,7 @@
 				BA8A689F1EACD38A0038F9AD /* Report.swift in Sources */,
 				BA8A68A91EAD1C870038F9AD /* ContactViewController.swift in Sources */,
 				BA8A68991EAC5BD60038F9AD /* EventViewController.swift in Sources */,
+				BAE2075A1EAE7C02003916C7 /* OptionButton.swift in Sources */,
 				BAEC98981E9B51D500032A0A /* LocationsViewController.swift in Sources */,
 				BAEC987D1E9AD4DC00032A0A /* MenuViewController.swift in Sources */,
 				BA8A68951EAC34170038F9AD /* LocationViewController.swift in Sources */,
@@ -344,7 +345,6 @@
 				BAEC98941E9AD75400032A0A /* Location.swift in Sources */,
 				BA8A68B71EAD84780038F9AD /* StaffAnnouncementsViewController.swift in Sources */,
 				BA8A68B51EAD78C00038F9AD /* ViewReportViewController.swift in Sources */,
-				BA8A689D1EACCEDB0038F9AD /* OptionButton.swift in Sources */,
 				BA5144CF1EABE1990010A593 /* CityStatusViewController.swift in Sources */,
 				BA8A68A51EACE88F0038F9AD /* WriteReportViewController.swift in Sources */,
 				BA8A68971EAC5BCD0038F9AD /* EventsViewController.swift in Sources */,
